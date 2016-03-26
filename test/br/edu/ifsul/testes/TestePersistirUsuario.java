@@ -5,9 +5,7 @@
  */
 package br.edu.ifsul.testes;
 
-import br.edu.ifsul.modelo.Operadora;
-import br.edu.ifsul.modelo.Tarifa;
-import java.util.GregorianCalendar;
+import br.edu.ifsul.modelo.Usuario;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,7 +14,7 @@ import javax.persistence.Persistence;
  *
  * @author Bruno
  */
-public class TestePersistirTarifa {
+public class TestePersistirUsuario {
 
     /**
      * @param args the command line arguments
@@ -25,15 +23,14 @@ public class TestePersistirTarifa {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DAW-2016-1-5N1-Trabalho-1");
         EntityManager em = emf.createEntityManager();
         
-        Tarifa t = new Tarifa ();
-        t.setCusto(0.40);
-        t.setInicioVigencia(new GregorianCalendar(2001, 12, 20));
-        t.setFimVigencia(new GregorianCalendar(2050, 6, 1));
-        t.setOperadora(em.find(Operadora.class, 1));
-        t.setRegraTarifacao(30);
+        Usuario u = new Usuario();
+        u.setEmail("brunohl91@gmail.com");
+        u.setLogin("bruno.leite");
+        u.setNome("Bruno Leite");
+        u.setSenha("1234");
         
         em.getTransaction().begin();
-        em.persist(t);
+        em.persist(u);
         em.getTransaction().commit();
         em.close();
         emf.close();

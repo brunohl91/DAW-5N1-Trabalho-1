@@ -40,6 +40,9 @@ public class Tarifa implements Serializable {
     @NotNull(message = "O custo da tarifa deve ser informado")
     @Column(name = "custo", columnDefinition = "numeric(12,2)", nullable = false)
     private Double custo;
+    @NotNull(message = "A regra de tarifação deve ser informada")
+    @Column(name = "regra_tarifacao", columnDefinition = "integer", nullable = false)
+    private Integer regraTarifacao;
     @NotNull(message = "A operadora deve ser informada")
     @ManyToOne
     @JoinColumn(name = "operadora", referencedColumnName = "id", nullable = false)
@@ -86,6 +89,14 @@ public class Tarifa implements Serializable {
 
     public void setOperadora(Operadora operadora) {
         this.operadora = operadora;
+    }
+
+    public Integer getRegraTarifacao() {
+        return regraTarifacao;
+    }
+
+    public void setRegraTarifacao(Integer regraTarifacao) {
+        this.regraTarifacao = regraTarifacao;
     }
     
     @Override

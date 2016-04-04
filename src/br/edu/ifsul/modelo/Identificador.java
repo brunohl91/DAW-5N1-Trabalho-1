@@ -39,7 +39,7 @@ public abstract class Identificador implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "data_final")
     private Calendar dataFinal;
-
+    
     public Identificador() {
     }
     

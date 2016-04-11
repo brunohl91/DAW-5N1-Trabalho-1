@@ -1,7 +1,6 @@
 
 package br.edu.ifsul.modelo;
 
-import com.oracle.webservices.internal.api.databinding.DatabindingMode;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -23,7 +22,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.NotBlank;
 
 /*
  Ideias p/ o futuro

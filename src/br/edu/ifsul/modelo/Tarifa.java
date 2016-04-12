@@ -2,6 +2,7 @@
 package br.edu.ifsul.modelo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -62,6 +64,17 @@ public class Tarifa implements Serializable {
     public Calendar getInicioVigencia() {
         return inicioVigencia;
     }
+    
+    @Transient
+    public String getInicioVigenciaString () {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        if (this.inicioVigencia != null) {
+            return sdf.format(this.inicioVigencia.getTime());
+        }
+        else {
+            return "";
+        }
+    }
 
     public void setInicioVigencia(Calendar inicioVigencia) {
         this.inicioVigencia = inicioVigencia;
@@ -69,6 +82,17 @@ public class Tarifa implements Serializable {
 
     public Calendar getFimVigencia() {
         return fimVigencia;
+    }
+    
+    @Transient
+    public String getFimVigenciaString () {
+        if (this.fimVigencia != null) {            
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            return sdf.format(this.fimVigencia.getTime());
+        }
+        else {
+            return "";
+        }
     }
 
     public void setFimVigencia(Calendar fimVigencia) {

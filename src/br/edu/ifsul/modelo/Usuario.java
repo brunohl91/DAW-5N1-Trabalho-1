@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
     @Length(max = 30, message = "O login não deve ultrapassar {max} caracteres")
     @Column(name = "login", length = 30, nullable = false)
     private String login;
-    @NotBlank(message = "A senha deve ser informado")
+    @NotBlank(message = "A senha deve ser informada")
     @Length(max = 30, message = "A senha não deve ultrapassar {max} caracteres")
     @Column(name = "senha", length = 30, nullable = false)
     private String senha;

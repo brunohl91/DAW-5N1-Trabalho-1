@@ -32,7 +32,7 @@ public class Prefixo implements Serializable {
     private Integer id;
     @NotBlank(message = "A descrição deve ser informada")
     @Length(max = 100, message = "A descrição não deve ultrapassar {max} caracteres")
-    @Column(name = "descricao", length = 100)
+    @Column(name = "descricao", length = 100, nullable = false)
     private String descricao;
     @NotBlank(message = "O prefixo deve ser informado")
     @Length(max = 10, message = "O prefixo não deve ultrapassar {max} caracteres")
@@ -43,7 +43,7 @@ public class Prefixo implements Serializable {
     @Max(value = 10, message = "A quantidade máxima de dígitos é {value}")
     @Column(name = "quantidade_digitos", nullable = false)
     private int quantidadeDigitos;
-    @NotNull(message = "A Localidade deve ser informado")
+    @NotNull(message = "A Localidade deve ser informada")
     @ManyToOne
     @JoinColumn(name = "localidade", referencedColumnName = "id", nullable = false)
     private Localidade localidade;

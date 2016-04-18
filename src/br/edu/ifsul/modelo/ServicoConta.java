@@ -45,7 +45,7 @@ public class ServicoConta implements Serializable {
     @Column(name = "custo", columnDefinition = "numeric(12,2)", nullable = false)
     private Double custo;
     @NotNull(message = "O custo real deve ser informado")
-    @Column(name = "custo_real", columnDefinition = "numeric(12,2)")
+    @Column(name = "custo_real", columnDefinition = "numeric(12,2)", nullable = false)
     private Double custoReal;
     @NotNull(message = "A conta deve ser informada")
     @ManyToOne

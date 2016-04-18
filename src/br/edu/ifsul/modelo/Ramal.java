@@ -21,7 +21,7 @@ public class Ramal extends Identificador implements Serializable {
     
     @Column(name = "descricao")
     private String descricao;
-    @NotBlank
+    @NotBlank(message = "O número deve ser informado")
     @Length(max = 6, min = 3, message = "O número deve ter no máximo {max} e no mínimo {min} caracteres")    
     @Column(name = "numero", nullable = false, unique = true)
     private String numero;

@@ -42,7 +42,7 @@ public class Ligacao implements Serializable {
     @Id
     @SequenceGenerator(name = "seq_ligacao", sequenceName = "seq_ligacao_id", allocationSize = 1)
     @GeneratedValue(generator = "seq_ligacao", strategy = GenerationType.SEQUENCE)
-    private Integer id;
+    private int id;
     @NotNull(message = "A data deve ser informada")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data", nullable = false)
@@ -50,7 +50,7 @@ public class Ligacao implements Serializable {
     @NotNull(message = "A duração deve ser informada")
     @Min(value = 0, message = "O valor mínimo para a duração é de {value} segundos")
     @Column(name = "duracao", nullable = false)
-    private Integer duracao;
+    private int duracao;
     @Length(max = 40, message = "O número de caracteres do número discado não deve ultrapassar {max}")
     @Column(name = "discado", length = 40)
     private String discado;
@@ -94,19 +94,19 @@ public class Ligacao implements Serializable {
     }
     
     public void adicionarRamal (Ramal r) {
-        this.ramaisLigacao.add(r);
+        this.getRamaisLigacao().add(r);
     }
     
-    public void removerRamal (Integer index) {
-        Ramal r = this.ramaisLigacao.get(index);
-        this.ramaisLigacao.remove(index);
+    public void removerRamal (int index) {
+        Ramal r = this.getRamaisLigacao().get(index);
+        this.getRamaisLigacao().remove(index);
     }
     
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -118,11 +118,11 @@ public class Ligacao implements Serializable {
         this.data = data;
     }
 
-    public Integer getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(Integer duracao) {
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 

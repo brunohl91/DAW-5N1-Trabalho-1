@@ -6,6 +6,7 @@
 package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.Conta;
+import br.edu.ifsul.modelo.Ligacao;
 import br.edu.ifsul.modelo.Operadora;
 import br.edu.ifsul.modelo.ServicoConta;
 import java.util.GregorianCalendar;
@@ -49,6 +50,8 @@ public class TestePersistirConta {
         c.setOperadora(em.find(Operadora.class, 1));
         c.adicionarServico(sc1);
         c.adicionarServico(sc2);
+        c.adicionarLigacao(em.find(Ligacao.class, 2));
+        c.adicionarLigacao(em.find(Ligacao.class, 4));
         
         em.getTransaction().begin();
         em.persist(c);

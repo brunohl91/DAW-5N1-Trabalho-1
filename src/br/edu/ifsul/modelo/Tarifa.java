@@ -18,6 +18,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  *
@@ -35,6 +37,9 @@ public class Tarifa implements Serializable {
     @Temporal(TemporalType.DATE)
     @Column(name = "inicio_vigencia", nullable = false)
     private Calendar inicioVigencia;
+    @Length(max = 70, message = "A descrição não deve ultrapassar {max} caracteres")
+    @Column(name = "descricao", length = 70)
+    private String descricao;
     @NotNull(message = "A data de fim da vigência deve ser informada")
     @Temporal(TemporalType.DATE)
     @Column(name = "fim_vigencia", nullable = false)
@@ -151,6 +156,14 @@ public class Tarifa implements Serializable {
     @Override
     public String toString() {
         return id + "";
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
     
 }

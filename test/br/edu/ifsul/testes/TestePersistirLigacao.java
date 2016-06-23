@@ -33,18 +33,19 @@ public class TestePersistirLigacao {
         EntityManager em = emf.createEntityManager();
 
         Ligacao l = new Ligacao();
-        l.setData(new GregorianCalendar(2016, 4, 4));
-        l.setDuracao(94);
-        l.setDiscado("005484080633");
-        l.setRamal("2103");
-        l.setSenha("3014");
+        l.setData(new GregorianCalendar(2016, 2, 2));
+        l.setDuracao(45);
+        l.setDiscado("005484080045");
+        l.setRamal("2145");
+        l.setSenha("3045");
         l.setErro("OK");
-        l.setCusto(1.54);
+        l.setConta(em.find(Conta.class, 2));
+        l.setCusto(1.1);
         l.setTarifa(em.find(Tarifa.class, 2));
         l.setServico(em.find(Servico.class, 2));
         l.setSenhaLigacao(em.find(Senha.class, 3));
         l.setPrefixo(em.find(Prefixo.class, 2));
-        l.setConta(em.find(Conta.class, 3));
+        l.adicionarRamal(em.find(Ramal.class, 1));
         
         em.getTransaction().begin();
         em.persist(l);

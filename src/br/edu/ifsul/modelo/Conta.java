@@ -58,8 +58,19 @@ public class Conta implements Serializable {
     private Operadora operadora;
     @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ServicoConta> servicos = new ArrayList<>();
+    @OneToMany(mappedBy = "conta", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Ligacao> ligacoes = new ArrayList<>();
 
     public Conta() {
+    }
+    
+    public void adicionarLigacao (Ligacao l) {
+        l.setConta(this);
+        this.getLigacoes().add(l);
+    }
+    
+    public void removerLigacao (int index) {
+        this.getLigacoes().remove(index);
     }
     
     public void adicionarServico (ServicoConta s) {
@@ -67,7 +78,7 @@ public class Conta implements Serializable {
         this.servicos.add(s);
     }
     
-    public void removerServico (Integer index) {
+    public void removerServico (int index) {
         this.servicos.remove(index);
     }
     
@@ -163,6 +174,14 @@ public class Conta implements Serializable {
     @Override
     public String toString() {
         return descricao;
+    }
+
+    public List<Ligacao> getLigacoes() {
+        return ligacoes;
+    }
+
+    public void setLigacoes(List<Ligacao> ligacoes) {
+        this.ligacoes = ligacoes;
     }
 
     

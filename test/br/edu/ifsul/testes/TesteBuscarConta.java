@@ -6,6 +6,7 @@
 package br.edu.ifsul.testes;
 
 import br.edu.ifsul.modelo.Conta;
+import br.edu.ifsul.modelo.Ligacao;
 import br.edu.ifsul.modelo.ServicoConta;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -25,14 +26,13 @@ public class TesteBuscarConta {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DAW-2016-1-5N1-Trabalho-1");
         EntityManager em = emf.createEntityManager();
 
-        Conta c = em.find(Conta.class, 3);
-        System.out.println(c.getCustoTotal());
-        System.out.println(c.getDescricao());
-        List<ServicoConta> sc = c.getServicos();
+        Conta c = em.find(Conta.class, 9);
         
-        for (ServicoConta s : sc) {
-            System.out.println(s.getDescricao());
+        
+        for (Ligacao l : c.getLigacoes()) {
+            System.out.println(l.getDiscado());
         }
+        
         
         em.close();
         emf.close();

@@ -26,7 +26,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "identificador")
-public abstract class Identificador implements Serializable {
+public class Identificador implements Serializable {
     
     @Id
     @SequenceGenerator(name = "seq_identificador", sequenceName = "seq_identificador_id", allocationSize = 1)
